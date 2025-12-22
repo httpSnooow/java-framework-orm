@@ -1,4 +1,4 @@
-# 🏛️ Framework de Mapeamento Objeto-Relacional (MOR)
+# Framework de Mapeamento Objeto-Relacional (MOR)
 
 > Uma implementação acadêmica de um framework de persistência em Java puro, desenhado para transpor o abismo entre a Orientação a Objetos e o modelo Relacional.
 
