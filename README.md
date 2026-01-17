@@ -12,7 +12,7 @@
 
 ---
 
-## 📖 Sobre o Projeto
+## Sobre o Projeto
 
 Este projeto foi desenvolvido para a disciplina de **Programação Orientada a Objetos II**, servindo como uma implementação prática dos conceitos avançados apresentados no livro *"Utilizando UML e Padrões"* de **Craig Larman**.
 
@@ -20,22 +20,22 @@ O objetivo não é apenas salvar dados, mas construir uma arquitetura desacoplad
 
 ---
 
-## 🏗️ Arquitetura e Design Patterns
+## Arquitetura e Design Patterns
 
 O núcleo do framework é construído sobre uma base sólida de padrões **GoF (Gang of Four)**. Cada decisão arquitetural resolve um problema específico de persistência:
 
 | Padrão | Aplicação no Projeto |
 | :--- | :--- |
-| 🏰 **Façade** | A classe `Persistencia` atua como porta de entrada única, escondendo a complexidade interna do subsistema de persistência do resto da aplicação. |
-| 🏭 **Factory** | A `FabricaDeMapeador` lê o arquivo `configuracao.xml` e instancia dinamicamente o Mapeador correto para cada entidade, desacoplando a lógica SQL das classes de negócio. |
-| 📝 **Template Method** | As classes abstratas de mapeamento definem o "esqueleto" dos algoritmos CRUD, permitindo que novas entidades sejam adicionadas apenas implementando os detalhes específicos, maximizando o reuso. |
-| 🚦 **State** | O ciclo de vida do objeto (`NOVO`, `ANTIGO_LIMPO`, `ANTIGO_SUJO...`) é gerido por classes de estado, eliminando condicionais complexas (`if/else`) e delegando o comportamento para o estado atual. |
-| 📦 **Command & UoW** | Operações de banco são encapsuladas em objetos (`Command`). A classe `Transacao` atua como **Unit of Work**, agrupando esses comandos para execução em lote e garantindo atomicidade. |
-| 💎 **Singleton** | Garante que serviços críticos como a `Persistencia` e a `FabricaDeMapeador` tenham instância única, centralizando o controle de recursos. |
+| **Façade** | A classe `Persistencia` atua como porta de entrada única, escondendo a complexidade interna do subsistema de persistência do resto da aplicação. |
+| **Factory** | A `FabricaDeMapeador` lê o arquivo `configuracao.xml` e instancia dinamicamente o Mapeador correto para cada entidade, desacoplando a lógica SQL das classes de negócio. |
+| **Template Method** | As classes abstratas de mapeamento definem o "esqueleto" dos algoritmos CRUD, permitindo que novas entidades sejam adicionadas apenas implementando os detalhes específicos, maximizando o reuso. |
+| **State** | O ciclo de vida do objeto (`NOVO`, `ANTIGO_LIMPO`, `ANTIGO_SUJO...`) é gerido por classes de estado, eliminando condicionais complexas (`if/else`) e delegando o comportamento para o estado atual. |
+| **Command & UoW** | Operações de banco são encapsuladas em objetos (`Command`). A classe `Transacao` atua como **Unit of Work**, agrupando esses comandos para execução em lote e garantindo atomicidade. |
+| **Singleton** | Garante que serviços críticos como a `Persistencia` e a `FabricaDeMapeador` tenham instância única, centralizando o controle de recursos. |
 
 ---
 
-## ⚙️ Funcionalidades
+## Funcionalidades
 
 O framework oferece um ciclo completo de persistência:
 
@@ -47,7 +47,7 @@ O framework oferece um ciclo completo de persistência:
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 <div align="left">
   <img src="https://img.shields.io/badge/Java-JDK_8-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
@@ -58,7 +58,7 @@ O framework oferece um ciclo completo de persistência:
 
 ---
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 * **Java JDK 8+**
