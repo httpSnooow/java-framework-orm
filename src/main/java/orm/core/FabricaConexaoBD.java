@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class FabricaConexaoBD {
-    private static final String URL = "jdbc:postgresql://localhost:5432/faculdade"; 
-    private static final String USER = "postgres"; 
+    private static final String URL = "jdbc:postgresql://localhost:5432/faculdade";
+    private static final String USER = "postgres";
     private static final String PASSWORD = "postgres";
 
     private static FabricaConexaoBD instancia = null;
@@ -19,7 +19,7 @@ public class FabricaConexaoBD {
         }
     }
 
-    public static FabricaConexaoBD obterInstancia() {
+    public static synchronized FabricaConexaoBD obterInstancia() {
         if (instancia == null) {
             instancia = new FabricaConexaoBD();
         }

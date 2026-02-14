@@ -1,5 +1,4 @@
 package orm.states;
-import orm.core.ObjetoPersistente;
 
 public class EstadoExcluido extends ObjetoEstadoAdapter {
     private static EstadoExcluido instancia = null;
@@ -14,5 +13,5 @@ public class EstadoExcluido extends ObjetoEstadoAdapter {
         }
         return instancia;
     }
-    
+
 }

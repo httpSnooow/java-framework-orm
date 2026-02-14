@@ -1,4 +1,5 @@
 package orm.core;
+
 import orm.states.IObjetoEstado;
 import orm.states.EstadoNovo;
 
@@ -10,10 +11,15 @@ public abstract class ObjetoPersistente {
         this.estado = EstadoNovo.obterInstancia();
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    
-    protected void setEstado(IObjetoEstado estado) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setEstado(IObjetoEstado estado) {
         this.estado = estado;
     }
 
