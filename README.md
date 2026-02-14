@@ -39,7 +39,7 @@ A força deste framework reside na aplicação rigorosa dos padrões **GoF (Gang
 | **Façade** | Complexidade de subsistemas | A classe `Persistencia` atua como **fachada única**, simplificando o uso do framework para o cliente final. |
 | **Factory Method** | Acoplamento de criação | A `FabricaDeMapeador` cria instâncias de mapeadores (ex: `MapeadorCliente`) dinamicamente baseada em configuração, sem acoplar o código. |
 | **Template Method** | Duplicação de código | Classes abstratas definem o **esqueleto do algoritmo CRUD**, permitindo que subclasses implementem apenas os detalhes específicos SQL. |
-| **State** | Condicionais complexas | O ciclo de vida do objeto é gerenciado por classes de estado (`Novo`, `Sujo`, `Limpo`, `Removido`), eliminando cadeias gigantes de `if/else`. |
+| **State** | Condicionais complexas | O ciclo de vida do objeto é gerenciado por classes de estado (`Novo`, `Sujo`, `Limpo`, `Excluído`), eliminando cadeias gigantes de `if/else`. |
 | **Command** | Operações atômicas | Cada operação de banco é encapsulada como um objeto `Command`, permitindo enfileiramento e execução controlada. |
 | **Singleton** | Gestão de Recursos | Garante acesso global e único a componentes críticos como o `Gerenciador de Conexões` e a `Fabrica`. |
 | **Identity Map** | Performance e Integridade | Cache de 1º nível que garante que cada linha do banco seja representada por **apenas uma instância** em memória por transação. |
