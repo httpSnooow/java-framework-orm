@@ -2,13 +2,13 @@
 <mapeadores>
     <mapeador tipo="BDR">
         <chave>Aluno</chave>
-        <mapa>poo2.MapeadorBDRAluno</mapa>
+        <mapa>orm.mappers.MapeadorBDRAluno</mapa>
         <tabela>aluno</tabela>
     </mapeador>
     
     <mapeador tipo="BDR">
         <chave>Disciplina</chave>
-        <mapa>poo2.MapeadorBDRDisciplina</mapa>
+        <mapa>orm.mappers.MapeadorBDRDisciplina</mapa>
         <tabela>disciplina</tabela>
     </mapeador>
 </mapeadores>

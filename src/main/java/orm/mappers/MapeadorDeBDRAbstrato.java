@@ -1,4 +1,8 @@
-package poo2;
+package orm.mappers;
+import orm.core.FabricaConexaoBD;
+import orm.core.ObjetoPersistente;
+import orm.core.Oid;
+import orm.states.EstadoAntigoLimpo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

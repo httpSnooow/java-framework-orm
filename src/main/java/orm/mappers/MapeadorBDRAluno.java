@@ -1,4 +1,6 @@
-package poo2;
+package orm.mappers;
+import domain.Aluno;
+import orm.core.ObjetoPersistente;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

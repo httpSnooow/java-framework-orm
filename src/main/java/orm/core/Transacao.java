@@ -1,4 +1,5 @@
-package poo2;
+package orm.core;
+import orm.commands.*;
 
 import java.util.LinkedList;
 

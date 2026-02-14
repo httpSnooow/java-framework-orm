@@ -1,4 +1,6 @@
-package poo2;
+package orm.core;
+import orm.states.IObjetoEstado;
+import orm.states.EstadoNovo;
 
 public abstract class ObjetoPersistente {
     private Long id;

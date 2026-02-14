@@ -1,4 +1,5 @@
-package poo2;
+package orm.mappers;
+import orm.mappers.IMapeador;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
@@ -29,8 +30,9 @@ public class FabricaDeMapeador {
     }
 
     private void montarColecaoMapeadores() {
-        File f = new File("configuracao/configuracao.xml");
         SAXBuilder builder = new SAXBuilder();
+        java.io.InputStream xmlStream = getClass().getClassLoader().getResourceAsStream("configuracao.xml");
+        Document doc = builder.build(xmlStream);
         
         try {
             Document doc = builder.build(f);

@@ -1,4 +1,4 @@
-package poo2;
+package orm.core;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

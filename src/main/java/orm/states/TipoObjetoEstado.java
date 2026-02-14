@@ -1,4 +1,4 @@
-package poo2;
+package orm.states;
 
 public enum TipoObjetoEstado {
     NOVO,

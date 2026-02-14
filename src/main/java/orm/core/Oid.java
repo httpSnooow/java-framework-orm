@@ -1,4 +1,4 @@
-package poo2;
+package orm.core;
 
 public class Oid {
 

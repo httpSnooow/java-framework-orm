@@ -1,4 +1,6 @@
-package poo2;
+package orm.states;
+import orm.core.ObjetoPersistente;
+import orm.core.Persistencia;
 
 public class EstadoNovo extends ObjetoEstadoAdapter {
     private static EstadoNovo instancia = null;

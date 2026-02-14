@@ -1,4 +1,6 @@
-package poo2;
+package orm.core;
+import orm.mappers.FabricaDeMapeador;
+import orm.mappers.IMapeador;
 
 public class Persistencia {
     private static Persistencia instancia = null;

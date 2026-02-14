@@ -1,4 +1,6 @@
-package poo2;
+package orm.mappers;
+import orm.core.Oid;
+import orm.core.ObjetoPersistente;
 
 public interface IMapeador {
     boolean inserir(Object obj);

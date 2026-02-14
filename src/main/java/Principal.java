@@ -1,4 +1,6 @@
-package poo2;
+import domain.*;
+import orm.core.*;
+import orm.states.TipoObjetoEstado;
 
 import java.sql.Connection;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package poo2;
+package orm.commands;
 
 public interface IComando {
     boolean executar();

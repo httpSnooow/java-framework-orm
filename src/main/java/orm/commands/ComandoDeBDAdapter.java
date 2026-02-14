@@ -1,4 +1,6 @@
-package poo2;
+package orm.commands;
+import orm.core.ObjetoPersistente;
+import orm.states.TipoObjetoEstado;
 
 public abstract class ComandoDeBDAdapter implements IComando {
     protected ObjetoPersistente objeto;

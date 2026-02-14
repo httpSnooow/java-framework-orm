@@ -1,4 +1,5 @@
-package poo2;
+package domain;
+import orm.core.ObjetoPersistente;
 
 public class Matricula {
     private Aluno aluno;
