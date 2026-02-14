@@ -1,0 +1,26 @@
+# Compilados (Java class files)
+*.class
+*.log
+*.ctxt
+
+# Pacotes (Arquivos que não devem ser versionados)
+*.jar
+*.war
+*.ear
+
+# Pastas de Build e Bibliotecas locais
+bin/
+lib/
+out/
+target/
+
+# Configurações do IntelliJ (arquivos .idea e .iml)
+.idea/
+*.iml
+
+# Configurações do VS Code
+.vscode/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
