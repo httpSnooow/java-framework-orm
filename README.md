@@ -1,59 +1,86 @@
-# Framework de Mapeamento Objeto-Relacional (MOR)
-
-> Uma implementação de um framework de persistência em Java puro, desenhado para transpor o abismo entre a Orientação a Objetos e o modelo Relacional.
+# Java ORM Framework - Advanced Design Patterns Implementation
 
 <div align="center">
 
-  ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
-  ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
-  ![GoF](https://img.shields.io/badge/Design_Patterns-GoF-333333?style=for-the-badge&logo=uml&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![Architecture](https://img.shields.io/badge/Architecture-Clean-green?style=for-the-badge&logo=uml&logoColor=white)
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge)
+
+### Beyond Theory: A Pure Java Persistence Engine
+*Bridge the gap between Object-Oriented Design and Relational Data without heavy frameworks.*
 
 </div>
 
 ---
 
+
 ## Sobre o Projeto
 
-Implementação prática dos conceitos avançados apresentados no livro *"Utilizando UML e Padrões"* de **Craig Larman**.
+Este projeto não é apenas mais um ORM. É uma implementação de referência dos conceitos avançados de persistência discutidos por **Craig Larman** em *"Utilizando UML e Padrões"*.
 
-O objetivo não é apenas salvar dados, mas construir uma arquitetura desacoplada, coesa e extensível, aplicando rigorosamente os princípios de engenharia de software para resolver o problema da impedância objeto-relacional.
+O objetivo é demonstrar como construir uma arquitetura de persistência robusta, desacoplada e profissional utilizando **Java Puro**, sem depender de frameworks "mágicos" como Hibernate ou JPA. Aqui, a mágica é a **Engenharia de Software**.
 
----
-
-## Arquitetura e Design Patterns
-
-O núcleo do framework é construído sobre uma base sólida de padrões **GoF (Gang of Four)**. Cada decisão arquitetural resolve um problema específico de persistência:
-
-| Padrão | Aplicação no Projeto |
-| :--- | :--- |
-| **Façade** | A classe `Persistencia` atua como porta de entrada única, escondendo a complexidade interna do subsistema de persistência do resto da aplicação. |
-| **Factory** | A `FabricaDeMapeador` lê o arquivo `configuracao.xml` e instancia dinamicamente o Mapeador correto para cada entidade, desacoplando a lógica SQL das classes de negócio. |
-| **Template Method** | As classes abstratas de mapeamento definem o "esqueleto" dos algoritmos CRUD, permitindo que novas entidades sejam adicionadas apenas implementando os detalhes específicos, maximizando o reuso. |
-| **State** | O ciclo de vida do objeto (`NOVO`, `ANTIGO_LIMPO`, `ANTIGO_SUJO...`) é gerido por classes de estado, eliminando condicionais complexas (`if/else`) e delegando o comportamento para o estado atual. |
-| **Command & UoW** | Operações de banco são encapsuladas em objetos (`Command`). A classe `Transacao` atua como **Unit of Work**, agrupando esses comandos para execução em lote e garantindo atomicidade. |
-| **Singleton** | Garante que serviços críticos como a `Persistencia` e a `FabricaDeMapeador` tenham instância única, centralizando o controle de recursos. |
+### Por que este projeto é diferente?
+Enquanto a maioria dos tutoriais ensina apenas a conectar no banco com JDBC, este framework implementa uma **camada de persistência completa**, resolvendo problemas complexos como:
+- Impedância Objeto-Relacional.
+- Gerenciamento de Estado de Objetos.
+- Transações Atômicas.
+- Carregamento Preguiçoso (Lazy Loading) e Mapeamento Dinâmico.
 
 ---
 
-## Funcionalidades
+## Diferenciais Arquiteturais (Design Patterns)
 
-O framework oferece um ciclo completo de persistência:
+A força deste framework reside na aplicação rigorosa dos padrões **GoF (Gang of Four)**. Cada padrão resolve um desafio crítico de persistência:
 
-* ✅ **CRUD Completo:** Operações de Create, Read, Update e Delete abstraídas.
-* ✅ **Identity Map:** Cache de objetos para evitar leituras duplicadas do banco na mesma transação.
-* ✅ **Extensibilidade XML:** Adição de novas entidades via configuração sem recompilar o núcleo.
-* ✅ **Gestão Transacional:** Lógica de "commit em duas fases" para integridade referencial.
-* ✅ **Dirty Checking:** O sistema sabe automaticamente quais objetos foram modificados e precisam ser salvos.
+| Padrão | Problema Resolvido | Aplicação no Projeto |
+| :--- | :--- | :--- |
+| **Façade** | Complexidade de subsistemas | A classe `Persistencia` atua como **fachada única**, simplificando o uso do framework para o cliente final. |
+| **Factory Method** | Acoplamento de criação | A `FabricaDeMapeador` cria instâncias de mapeadores (ex: `MapeadorCliente`) dinamicamente baseada em configuração, sem acoplar o código. |
+| **Template Method** | Duplicação de código | Classes abstratas definem o **esqueleto do algoritmo CRUD**, permitindo que subclasses implementem apenas os detalhes específicos SQL. |
+| **State** | Condicionais complexas | O ciclo de vida do objeto é gerenciado por classes de estado (`Novo`, `Sujo`, `Limpo`, `Removido`), eliminando cadeias gigantes de `if/else`. |
+| **Command** | Operações atômicas | Cada operação de banco é encapsulada como um objeto `Command`, permitindo enfileiramento e execução controlada. |
+| **Singleton** | Gestão de Recursos | Garante acesso global e único a componentes críticos como o `Gerenciador de Conexões` e a `Fabrica`. |
+| **Identity Map** | Performance e Integridade | Cache de 1º nível que garante que cada linha do banco seja representada por **apenas uma instância** em memória por transação. |
 
 ---
 
-## Tecnologias Utilizadas
+## Ciclo de Vida do Objeto (State Pattern)
+
+O framework gerencia automaticamente o estado das entidades para otimizar as operações de banco. O diagrama abaixo ilustra as transições de estado gerenciadas pelo padrão **State**:
+
+```mermaid
+stateDiagram-v2
+    [*] --> NOVO : new()
+    
+    NOVO --> ANTIGO_LIMPO : save() (INSERT)
+    
+    ANTIGO_LIMPO --> ANTIGO_SUJO : setX() (Modificação)
+    ANTIGO_LIMPO --> ANTIGO_EXCLUÍDO : delete()
+    
+    ANTIGO_SUJO --> ANTIGO_LIMPO : commit() (UPDATE)
+    ANTIGO_SUJO --> ANTIGO_LIMPO : rollback()
+    
+    ANTIGO_EXCLUÍDO --> EXCLUÍDO : commit() (DELETE)
+    EXCLUÍDO --> [*]
+    
+    note right of ANTIGO_SUJO
+      Dirty Checking: O sistema sabe
+      o que mudou e gera o UPDATE
+      automaticamente.
+    end note
+```
+
+---
+
+## 🛠 Tecnologias Utilizadas
 
 <div align="left">
-  <img src="https://img.shields.io/badge/Java-JDK_8-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
-  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Java-JDK_8%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-DataBase-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/JDOM-XML_Parser-orange?style=for-the-badge&logo=xml&logoColor=white" />
   <img src="https://img.shields.io/badge/JDBC-Connector-gray?style=for-the-badge&logo=java&logoColor=white" />
-  <img src="https://img.shields.io/badge/XML-JDOM_2-orange?style=for-the-badge&logo=xml&logoColor=white" />
 </div>
 
 ---
