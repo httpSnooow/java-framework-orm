@@ -1,6 +1,6 @@
 # Framework de Mapeamento Objeto-Relacional (MOR)
 
-> Uma implementação acadêmica de um framework de persistência em Java puro, desenhado para transpor o abismo entre a Orientação a Objetos e o modelo Relacional.
+> Uma implementação de um framework de persistência em Java puro, desenhado para transpor o abismo entre a Orientação a Objetos e o modelo Relacional.
 
 <div align="center">
 
@@ -14,7 +14,7 @@
 
 ## Sobre o Projeto
 
-Este projeto foi desenvolvido para a disciplina de **Programação Orientada a Objetos II**, servindo como uma implementação prática dos conceitos avançados apresentados no livro *"Utilizando UML e Padrões"* de **Craig Larman**.
+Implementação prática dos conceitos avançados apresentados no livro *"Utilizando UML e Padrões"* de **Craig Larman**.
 
 O objetivo não é apenas salvar dados, mas construir uma arquitetura desacoplada, coesa e extensível, aplicando rigorosamente os princípios de engenharia de software para resolver o problema da impedância objeto-relacional.
 
