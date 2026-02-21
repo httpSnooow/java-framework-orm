@@ -20,7 +20,8 @@ target/
 
 # Configurações do VS Code
 .vscode/
-
+sources.txt/
+sc.ps1/
 # Arquivos de sistema
 .DS_Store
 Thumbs.db
