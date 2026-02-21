@@ -20,9 +20,9 @@ target/
 
 # Configurações do VS Code
 .vscode/
-sources.txt/
-sc.ps1/
-javac/
+sources.txt
+sc.ps1
+javac
 # Arquivos de sistema
 .DS_Store
 Thumbs.db
